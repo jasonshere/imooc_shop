@@ -1,7 +1,6 @@
 <?php
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-use yii\helpers\Url;
+    use yii\bootstrap\ActiveForm;
+    use yii\helpers\Html;
 ?>
 <!DOCTYPE html>
 <html class="login-bg">
@@ -27,7 +26,6 @@ use yii\helpers\Url;
     <link rel="stylesheet" href="assets/admin/css/compiled/signin.css" type="text/css" media="screen" />
 
     <!-- open sans font -->
-    <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -40,7 +38,7 @@ use yii\helpers\Url;
         <a class="brand" href="index.html"></a>
         <?php $form = ActiveForm::begin([
             'fieldConfig' => [
-                'template' => '{error}{input}'
+                'template' => '{error}{input}',
             ],
         ]); ?>
         <div class="span4 box">
@@ -48,12 +46,12 @@ use yii\helpers\Url;
                 <h6>慕课商城 - 后台管理</h6>
                 <?php echo $form->field($model, 'adminuser')->textInput(["class" => "span12", "placeholder" => "管理员账号"]); ?>
                 <?php echo $form->field($model, 'adminpass')->passwordInput(["class" => "span12", "placeholder" => "管理员密码"]); ?>
-                <a href="<?php echo Url::to(['public/forgetpass']) ?>" class="forgot">忘记密码?</a>
+                <a href="<?php echo yii\helpers\Url::to(['public/seekpassword']); ?>" class="forgot">忘记密码?</a>
                 <?php echo $form->field($model, 'rememberMe')->checkbox([
-                    "id" => "remember-me",
-                    "template" => "<div class=\"remember\">\n\t{input}\n\t<label for=\"remember-me\">记住我</label>\n</div>"
+                    'id' => 'remember-me',
+                    'template' => '<div class="remember">{input}<label for="remember-me">记住我</label></div>',
                 ]); ?>
-                <?php echo Html::submitButton('登录', ['class' => 'btn-glow primary login']) ?>
+                <?php echo Html::submitButton('登录', ["class" => "btn-glow primary login"]); ?>
             </div>
         </div>
         <?php ActiveForm::end(); ?>

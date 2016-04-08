@@ -2,9 +2,9 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=10.108.79.18;dbname=courseshop',
+    'dsn' => 'mysql:host=localhost;dbname=imooc_shop',
     'username' => 'root',
-    'password' => 'abc123!',
+    'password' => 'root123',
     'charset' => 'utf8',
     'tablePrefix' => 'shop_',
 ];
