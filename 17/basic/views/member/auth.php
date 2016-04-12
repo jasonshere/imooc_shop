@@ -1,3 +1,7 @@
+<?php
+    use yii\bootstrap\ActiveForm;
+    use yii\helpers\Html;
+?>
 <!-- ============================================================= HEADER : END ============================================================= -->		<!-- ========================================= MAIN ========================================= -->
 <main id="authentication" class="inner-bottom-md">
 	<div class="container">
@@ -11,38 +15,40 @@
 					<div class="social-auth-buttons">
 						<div class="row">
 							<div class="col-md-6">
-								<button class="btn-block btn-lg btn btn-facebook"><i class="fa fa-qq"></i> 使用QQ账号登录</button>
+								<button id='login_qq' class="btn-block btn-lg btn btn-facebook"><i class="fa fa-qq"></i> 使用QQ账号登录</button>
 							</div>
 							<div class="col-md-6">
-								<button class="btn-block btn-lg btn btn-twitter"><i class="fa fa-weibo"></i> 使用新浪微博账号登录</button>
+								<button id='login_weibo' class="btn-block btn-lg btn btn-twitter"><i class="fa fa-weibo"></i> 使用新浪微博账号登录</button>
 							</div>
 						</div>
 					</div>
-
-					<form role="form" class="login-form cf-style-1">
-						<div class="field-row">
-                            <label>电子邮箱</label>
-                            <input type="text" class="le-input">
-                        </div><!-- /.field-row -->
-
-                        <div class="field-row">
-                            <label>密码</label>
-                            <input type="text" class="le-input">
-                        </div><!-- /.field-row -->
-
+                    <?php $form = ActiveForm::begin([
+                        'fieldConfig' => [
+                            'template' => '<div class="field-row">{label}{input}</div>{error}'
+                        ],
+                        'options' => [
+                            'class' => 'login-form cf-style-1',
+                            'role' => 'form',
+                        ],
+                        'action' => ['member/auth'],
+                    ]); ?>
+                        <?php echo $form->field($model, 'loginname')->textInput(['class' => 'le-input']); ?>
+                        <?php echo $form->field($model, 'userpass')->passwordInput(['class' => 'le-input']); ?>
                         <div class="field-row clearfix">
-                        	<span class="pull-left">
-                        		<label class="content-color"><input type="checkbox" class="le-checbox auto-width inline"> <span class="bold">记住我</span></label>
-                        	</span>
+                        <?php echo $form->field($model, 'rememberMe')->checkbox([
+                            'template' => '<span class="pull-left"><label class="content-color">{input} <span class="bold">记住我</span></label></span>',
+                            'class' => "le-checkbox auto-width inline",
+                        ]); ?>
                         	<span class="pull-right">
                         		<a href="#" class="content-color bold">忘记密码 ?</a>
                         	</span>
                         </div>
 
                         <div class="buttons-holder">
-                            <button type="submit" class="le-button huge">安全登录</button>
+                            <?php echo Html::submitButton('安全登录', ['class' => 'le-button huge']); ?>
                         </div><!-- /.buttons-holder -->
-					</form><!-- /.cf-style-1 -->
+
+                    <?php ActiveForm::end(); ?><!-- /.cf-style-1 -->
 
 				</section><!-- /.sign-in -->
 			</div><!-- /.col -->
@@ -51,17 +57,26 @@
 				<section class="section register inner-left-xs">
 					<h2 class="bordered">新建账户</h2>
 					<p>创建一个属于你自己的账户</p>
-
-					<form role="form" class="register-form cf-style-1">
-						<div class="field-row">
-                            <label>电子邮箱</label>
-                            <input type="text" class="le-input">
-                        </div><!-- /.field-row -->
-
+                    <?php
+                        if (Yii::$app->session->hasFlash('info')) {
+                            echo Yii::$app->session->getFlash('info');
+                        }
+                        $form = ActiveForm::begin([
+                            'fieldConfig' => [
+                                'template' => '<div class="field-row">{label}{input}</div>{error}'
+                            ],
+                            'options' => [
+                                'class' => 'register-form cf-style-1',
+                                'role' => 'form',
+                            ],
+                            'action' => ['member/reg'],
+                        ]);
+                    ?>
+                        <?php echo $form->field($model, 'useremail')->textInput(['class' => 'le-input']); ?>
                         <div class="buttons-holder">
-                            <button type="submit" class="le-button huge">注册</button>
+                            <?php echo Html::submitButton('注册', ['class' => 'le-button huge']); ?>
                         </div><!-- /.buttons-holder -->
-					</form>
+                    <?php ActiveForm::end(); ?>
 
 					<h2 class="semi-bold">加入我们您将会享受到前所未有的购物体验 :</h2>
 
@@ -79,4 +94,21 @@
 	</div><!-- /.container -->
 </main><!-- /.authentication -->
 <!-- ========================================= MAIN : END ========================================= -->		<!-- ============================================================= FOOTER ============================================================= -->
+<script type="text/javascript">
+    var childWindow;
+    function toQzoneLogin()
+    {
+        childWindow = window.open("<?php echo Yii::$app->request-> ?>oauth/qq_login.php","TencentLogin","width=450,height=320,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+    } 
+    
+    function closeChildWindow()
+    {
+        childWindow.close();
+    }
 
+    var qqbtn = document.getElementById("login_qq");
+    qqbtn.onclick = function(){
+        toQzoneLogin();
+    }
+
+</script>

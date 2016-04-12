@@ -34,6 +34,9 @@
                                 <th class="span3 sortable">
                                     <span class="line"></span>年龄
                                 </th>
+                                <th class="span3 sortable">
+                                    <span class="line"></span>生日
+                                </th>
                                 <th class="span3 sortable align-right">
                                     <span class="line"></span>操作
                                 </th>
@@ -44,24 +47,31 @@
                         <?php foreach($users as $user): ?>
                         <tr class="first">
                             <td>
-                                <img src="assets/admin/img/contact-img.png" class="img-circle avatar hidden-phone" />
+                                <?php if (empty($user->profile->avatar)): ?>
+                                    <img src="<?php echo Yii::$app->params['defaultValue']['avatar']; ?>" class="img-circle avatar hidden-phone" />
+                                <?php else: ?>
+                                    <img src="assets/uploads/avatar/<?php echo $user->profile->avatar; ?>" class="img-circle avatar hidden-phone" />
+                                <?php endif; ?>
                                 <a href="#" class="name"><?php echo $user->username; ?></a>
                                 <span class="subtext"><?php echo $user->useremail; ?></span>
                             </td>
                             <td>
-                                <?php echo $user->profile->realname; ?>
+                                <?php echo isset($user->profile->realname) ? $user->profile->realname : '未填写'; ?>
                             </td>
                             <td>
-                                <?php echo $user->profile->nickname; ?>
+                                <?php echo isset($user->profile->nickname) ? $user->profile->nickname : '未填写'; ?>
                             </td>
                             <td>
-                                <?php echo $user->profile->sex; ?>
+                                <?php echo isset($user->profile->sex) ? $user->profile->sex : '未填写'; ?>
                             </td>
                             <td>
-                                <?php echo $user->profile->age; ?>
+                                <?php echo isset($user->profile->age) ? $user->profile->age : '未填写'; ?>
+                            </td>
+                            <td>
+                                <?php echo isset($user->profile->birthday) ? $user->profile->birthday : '未填写'; ?>
                             </td>
                             <td class="align-right">
-                                删除
+                            <a href="<?php echo yii\helpers\Url::to(['user/del', 'userid' => $user->userid]); ?>">删除</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -69,15 +79,11 @@
                     </table>
                 </div>
                 <div class="pagination pull-right">
-                    <ul>
-                        <li><a href="#">&#8249;</a></li>
-                        <li><a class="active" href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&#8250;</a></li>
-                    </ul>
+                    <?php echo yii\widgets\LinkPager::widget([
+                        'pagination' => $pager,
+                        'prevPageLabel' => '&#8249;',
+                        'nextPageLabel' => '&#8250;',
+                    ]); ?>
                 </div>
                 <!-- end users table -->
             </div>

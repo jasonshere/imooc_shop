@@ -46,15 +46,21 @@
             <ul>
                 <li><a href="index.html">首页</a></li>
                 <li><a href="category-grid.html">所有分类</a></li>
+                <?php if (\Yii::$app->session['isLogin'] == 1): ?>
                 <li><a href="cart.html">我的购物车</a></li>
                 <li><a href="orders.html">我的订单</a></li>
+                <?php endif; ?>
             </ul>
         </div><!-- /.col -->
 
         <div class="col-xs-12 col-sm-6 no-margin">
             <ul class="right">
-                <li><a href="authentication.html">注册</a></li>
-                <li><a href="authentication.html">登录</a></li>
+            <?php if (\Yii::$app->session['isLogin'] == 1): ?>
+                您好 , 欢迎您回来 <?php echo \Yii::$app->session['loginname']; ?> , <a href="<?php echo yii\helpers\Url::to(['member/logout']); ?>">退出</a>
+            <?php else: ?>
+                <li><a href="<?php echo yii\helpers\Url::to(['member/auth']); ?>">注册</a></li>
+                <li><a href="<?php echo yii\helpers\Url::to(['member/auth']); ?>">登录</a></li>
+            <?php endif; ?>
             </ul>
         </div><!-- /.col -->
     </div><!-- /.container -->
