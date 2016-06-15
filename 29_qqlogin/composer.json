@@ -1,0 +1,8 @@
+{
+    "repositories": {
+        "packaglist": {
+            "type": "composer",
+            "url": "http://packaglist.phpcomposer.com"
+        }
+    }
+}

@@ -7,6 +7,7 @@ use Yii;
 class Admin extends ActiveRecord
 {
     public $rememberMe = true;
+    public $repass;
     public static function tableName()
     {
         return "{{%admin}}";
@@ -15,13 +16,15 @@ class Admin extends ActiveRecord
     public function rules()
     {
         return [
-            ['adminuser', 'required', 'message' => '管理员账号不能为空', 'on' => ['login', 'seekpass']],
-            ['adminpass', 'required', 'message' => '管理员密码不能为空', 'on' => 'login'],
+            ['adminuser', 'required', 'message' => '管理员账号不能为空', 'on' => ['login', 'seekpass', 'changepass']],
+            ['adminpass', 'required', 'message' => '管理员密码不能为空', 'on' => ['login', 'changepass']],
             ['rememberMe', 'boolean', 'on' => 'login'],
             ['adminpass', 'validatePass', 'on' => 'login'],
             ['adminemail', 'required', 'message' => '电子邮箱不能为空', 'on' => 'seekpass'],
             ['adminemail', 'email', 'message' => '电子邮箱格式不正确', 'on' => 'seekpass'],
             ['adminemail', 'validateEmail', 'on' => 'seekpass'],
+            ['repass', 'required', 'message' => '确认密码不能为空', 'on' => 'changepass'],
+            ['repass', 'compare', 'compareAttribute' => 'adminpass', 'message' => '两次密码输入不一致', 'on' => 'changepass'],
         ];
     }
 
@@ -68,8 +71,33 @@ class Admin extends ActiveRecord
         $this->scenario = "seekpass";
         if ($this->load($data) && $this->validate()) {
             //做点有意义的事
+            $time = time();
+            $token = $this->createToken($data['Admin']['adminuser'], $time);
+            $mailer = Yii::$app->mailer->compose('seekpass', ['adminuser' => $data['Admin']['adminuser'], 'time' => $time, 'token' => $token]);
+            $mailer->setFrom("imooc_shop@163.com");
+            $mailer->setTo($data['Admin']['adminemail']);
+            $mailer->setSubject("慕课商城-找回密码");
+            if ($mailer->send()) {
+                return true;
+            }
         }
         return false;
     
     }
+
+    public function createToken($adminuser, $time)
+    {
+        return md5(md5($adminuser).base64_encode(Yii::$app->request->userIP).md5($time));
+    }
+
+    public function changePass($data) 
+    {
+        $this->scenario = "changepass";
+        if ($this->load($data) && $this->validate()) {
+            return (bool)$this->updateAll(['adminpass' => md5($this->adminpass)], 'adminuser = :user', [':user' => $this->adminuser]);
+        }
+        return false;
+    }
+
+
 }

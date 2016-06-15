@@ -1,0 +1,44 @@
+/*===================================================================================*/
+/*  Browser Specific Styles
+/*===================================================================================*/
+
+// Firefox
+.gecko{
+    .dropdown{
+        > a{
+            &:after{
+                vertical-align: middle!important;
+            }
+        }
+    }
+
+    .dropdown-toggle{
+        &:after{
+            vertical-align: middle!important;
+        }
+    }
+    
+    header .top-search-holder .search-area .search-button:after{
+        vertical-align: middle!important;
+    }
+}
+
+// IE 9
+.ie9{
+    #top-megamenu-nav .dropdown .dropdown-toggle{
+        &:before{
+            bottom:-23%;
+        }
+    }
+
+    .le-select{
+        select{
+            padding: 5px;
+        }
+
+        &:after{
+            display: none;
+
+        }
+    }
+}

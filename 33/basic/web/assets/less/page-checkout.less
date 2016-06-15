@@ -1,0 +1,160 @@
+/*===================================================================================*/
+/*  Checkout Page
+/*===================================================================================*/
+
+#checkout-page{
+    .billing-address{
+        .le-checkbox{
+            .inline;
+        }
+        
+        .placeholder{
+            .capital;
+        } 
+        
+        form{
+            margin: 23px 0 0 0;
+        }
+        
+        .le-input{
+            padding: 9px;
+        }
+        
+        .field-row{
+            margin-bottom:25px;
+        }
+    }
+    
+    #create-account{
+        font-size: 13px;
+        line-height: 24px;
+    }
+
+    #shipping-address{
+        margin: 66px 0 0 0;
+        
+        form{
+            margin: 24px 0 0 0;
+            font-size: 14px;
+        }
+    }
+    
+    #your-order{
+        margin: 58px 0 0 0;
+        
+        .order-item{
+            border-bottom:1px solid darken(@second-color,10%);
+            padding: 24px 0 25px 0;
+
+            &:first-child{
+                margin-top: 16px;
+            }
+            
+            .qty{
+                font-weight: 700;
+                font-size: 18px;
+                display: block;
+                margin: 14px 0 0 0;
+                color:@black;
+            }
+            
+            .title{
+                font-weight: 600;
+                .capital;
+
+                a{
+                    margin:0 0 0 -42px;
+                }
+                
+                &, a{
+                    line-height: 27px;
+                    color:@black;
+                }
+            }
+            
+            .brand{
+                margin: 0 0 0 -42px;
+                font-size: 10px;
+                line-height: 18px;
+                .uppercase;
+            }
+
+            .price{
+                text-align: right;
+                font-weight: 800;
+                font-size: 17px;
+                line-height: 46px;
+            }
+        }
+    }
+
+    #subtotal-holder{
+        margin: 44px 0 0 0;
+
+        .radio-group {
+            .radio-label {
+                margin-bottom: 12px;
+            }
+        }
+        
+        .tabled-data li {
+            label{
+                min-width: 230px;
+            }
+
+            .value{
+                width: 140px;
+            }
+        }
+    }
+
+    #total-field{
+        margin-top: 11px;
+
+        label{
+            line-height: 24px;
+        }
+        
+        .value{
+            font-size: 21px;
+            line-height: 30px;
+        }
+    }
+    
+    .place-order-button{
+        text-align: right;
+        margin: 23px 0 52px 0;
+    }
+}
+
+#payment-method-options{
+    margin: 90px 0 0 0;
+    
+    .payment-method-option{
+        padding: 26px 0 25px;;
+        border-bottom: 1px solid darken(@second-color,10%);
+
+        &:first-child{
+            padding-top: 0;
+        }
+        
+        .radio-label{
+            vertical-align: top;
+            margin-top: -3px;
+            font-size: 16px;
+            .capital;
+        }
+        
+        .fake-box{
+            margin-right: 20px;
+        }
+        
+        .value{
+            .capital;
+ 
+            p{
+                text-transform: none;
+            }
+        }
+    }
+}

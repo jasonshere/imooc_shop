@@ -1,0 +1,131 @@
+/*===================================================================================*/
+/*  Breadcrumb
+/*===================================================================================*/
+
+.breadcrumb-nav-holder{
+    display: inline-block;
+    float: left;
+
+    &.minimal{
+        .breadcrumb-item {
+            &:before,&:after{
+                display:none;
+            }
+    
+            > a{
+                background-color: #fff;
+                padding: 10px 18px;  
+            }
+        }
+    }
+    
+    .breadcrumb-item{
+        display: inline-block!important;
+        float: left;
+        position: relative!important;
+        display:table-cell;
+
+        &.current{
+            &:after,&:before{
+                display: none;
+            }
+            
+            &.gray{
+                a{
+                    color: @black;
+                }
+            }
+        }
+        
+        &:last-child{
+            a{
+                border-right: 0;
+            }
+        }
+        
+        &.open,&:focus,&:hover{
+            &:after{
+                border-color: transparent transparent transparent darken(@second-color,5%)!important;
+            }
+            
+            >a {
+                background-color: darken(@second-color,5%);
+            }
+        }
+        
+        &:before,&:after{
+            content:"";
+            display: block;
+            position: absolute;
+            z-index: 100;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            .transition(0.3s,ease);
+        }
+
+        &:before{
+            top: 39%;
+            right: -10px;
+            border-width: 7.5px 0 7.5px 10px;
+            border-color: transparent transparent transparent darken(@second-color,10%);
+        }
+        
+        &:after{
+            top: 39%;
+            right: -8px;
+            border-width: 7.5px 0 7.5px 10px;
+            border-color: transparent transparent transparent @second-color;
+        }
+
+        .dropdown-menu {
+            min-width:100%;
+            top: 97%!important;
+            left: 0!important;
+            right: auto!important;
+
+            li{
+                > a{
+                    padding: 8px 16px;
+                    border-bottom: 1px solid darken(@second-color,10%)!important;;
+                    
+                    &:last-child{
+                        border-bottom:none!important;
+                    }
+                } 
+            }
+        
+            &:before{
+                display: none;
+            }
+        }
+
+        > a{
+            letter-spacing: -1px;
+            display: inline-block;
+            background-color: @second-color;
+            padding: 20px 18px;
+            color: @black;
+            border-right: 1px solid darken(@second-color,10%);
+            position: relative;
+            .capital;
+
+            &.dropdown-toggle{
+                &:after{
+                    content: @fa-var-caret-right;
+                    color: @black;
+                    font-size: 12px;
+                    display: inline-block;
+                    vertical-align: bottom;
+                    margin: 0 0 0 5px;
+                    .rotate(45deg);
+                }
+            }
+        }
+    }
+}
+
+#breadcrumb-alt{
+    border-bottom: 1px solid darken(@second-color,10%);
+    margin-bottom: 27px;
+}

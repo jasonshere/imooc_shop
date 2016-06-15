@@ -1,0 +1,44 @@
+/*===================================================================================*/
+/*  FAQ Page
+/*===================================================================================*/
+
+.panel-group-faq{
+	.panel-faq{
+		.panel-heading{
+			padding: 0 15px;
+
+			.panel-title{
+				font-size: 28px;
+				color: @title-color;
+				font-weight: 400 !important;
+
+				> a{
+					padding: 24px 0;
+					display: block;
+
+					&:after{
+						content: "\f106";
+						font-family: fontawesome;
+						float: right;
+					}
+
+					&.collapsed{
+						&:after{
+							content: "\f107";
+							color: #e1e1e1;
+						}
+					}
+				
+				}
+			}
+		}
+
+		.panel-body{
+			line-height: 28px;
+			font-size: 16px;
+			color: @content-color;
+			border-top: 0 !important;
+			padding: 20px 15px 60px 15px;
+		}
+	}
+}
