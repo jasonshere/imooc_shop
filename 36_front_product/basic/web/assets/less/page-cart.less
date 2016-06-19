@@ -1,0 +1,104 @@
+/*===================================================================================*/
+/*  Shopping Cart Page
+/*===================================================================================*/
+
+#cart-page{
+    margin-bottom: 76px;
+    
+    .widget{
+        margin: 0 0 17px 0!important;
+        padding-left: 40px;
+    
+        .body {
+            padding: 7px 0;
+        }
+        
+        .buttons-holder{
+            text-align: right;
+        
+            .simple-link{
+                color: @black;
+                margin: 10px 0;
+                font-size: 14px;
+                line-height: 24px;
+                .capital;
+            }
+        }
+        
+        .tabled-data li label{
+            min-width: 125px;
+        }
+        
+        #total-price{
+            margin: 18px 0 0 0;
+            padding-bottom:24px;
+            border-bottom:0;
+        
+            .value{
+                font-weight: bold;
+                font-size: 25px;
+                line-height: 25px;
+            }
+        }
+    }
+
+    .items-holder{
+        margin: 14px 0 0 0;
+
+        .close-btn{
+            display:inline-block;
+            position:absolute;
+            right: 1%;
+            top: 39%;
+            
+            &:after{
+                color:@black;
+                content:@fa-var-times;;
+                font-family: fontawesome;
+
+            }
+        }
+        
+        .cart-item{
+            border-bottom: 1px solid darken(@second-color,10%);
+            padding: 27px 0 24px;
+            
+            &:first-child{
+                padding-top: 0;
+            }
+            
+            &:last-child{
+                border-bottom: 0;
+            }
+            
+            .title{
+                padding:17px 0 0 0;
+            
+                a{
+                    line-height: 15px;
+                    font-size: 16px;
+                    text-transform: capitalize;
+                    font-weight: 700;
+                    color: @blue;
+                }
+            }
+            
+            .brand{
+                font-size: 10px;
+                line-height: 27px;
+                .uppercase;
+            }
+            
+            .quantity{
+                margin: 11px 0 0 30px;
+            }
+            
+            .price{
+                font-weight: 700;
+                font-size: 18px;
+                padding: 28px 0;
+                text-align: center;
+            }
+        }
+    }
+}

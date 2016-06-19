@@ -1,0 +1,59 @@
+//===================================================================================*/
+//  Variables
+//===================================================================================*/
+
+@green-color:         #59B210;
+@blue-color:          #3498db;
+@red-color:           #e74c3c;
+@orange-color:        #F27A24;
+@navy-color:          #34495E;
+@dark-green-color:    #21b68e;
+
+@second-color:        #F9F9F9;
+@black:               #3D3D3D;
+@light-black:         #636363;
+
+@blue:                #0E53A5;
+@highlight-txt:       #fff;
+
+@text-color:          #5D5D5D;
+
+@container-md:        985px;
+@container-lg:        1200px;
+
+@title-color:         #434343;
+@content-color:       #747474;
+
+
+//== Media queries breakpoints
+//
+//## Define the breakpoints at which your layout will change, adapting to different screen sizes.
+
+// Extra small screen / phone
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+@screen-xs:                  480px;
+@screen-xs-min:              @screen-xs;
+@screen-phone:               @screen-xs-min;
+
+// Small screen / tablet
+// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
+@screen-sm:                  768px;
+@screen-sm-min:              @screen-sm;
+@screen-tablet:              @screen-sm-min;
+
+// Medium screen / desktop
+// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
+@screen-md:                  992px;
+@screen-md-min:              @screen-md;
+@screen-desktop:             @screen-md-min;
+
+// Large screen / wide desktop
+// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
+@screen-lg:                  1200px;
+@screen-lg-min:              @screen-lg;
+@screen-lg-desktop:          @screen-lg-min;
+
+// So media queries don't overlap when required, provide a maximum
+@screen-xs-max:              (@screen-sm-min - 1);
+@screen-sm-max:              (@screen-md-min - 1);
+@screen-md-max:              (@screen-lg-min - 1);

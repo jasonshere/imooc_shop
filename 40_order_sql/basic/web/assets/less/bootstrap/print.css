@@ -1,0 +1,107 @@
+@media print {
+  /* line 8, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\000038}}
+  * {
+    text-shadow: none !important;
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  /* line 15, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000315}}
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  /* line 20, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000320}}
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  /* line 24, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000324}}
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  /* line 29, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000329}}
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+  /* line 34, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000334}}
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  /* line 40, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000340}}
+  thead {
+    display: table-header-group;
+  }
+  /* line 44, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000344}}
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  /* line 49, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000349}}
+  img {
+    max-width: 100% !important;
+  }
+  /* line 53, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000353}}
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  /* line 60, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000360}}
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  /* line 67, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000367}}
+  select {
+    background: #fff !important;
+  }
+  /* line 72, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000372}}
+  .navbar {
+    display: none;
+  }
+  /* line 76, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000376}}
+  .table td,
+  .table th {
+    background-color: #fff !important;
+  }
+  /* line 83, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000383}}
+  .btn > .caret,
+  .dropup > .btn > .caret {
+    border-top-color: #000 !important;
+  }
+  /* line 87, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000387}}
+  .label {
+    border: 1px solid #000;
+  }
+  /* line 91, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000391}}
+  .table {
+    border-collapse: collapse !important;
+  }
+  /* line 95, F:\Works\media center\preview\css\less\print.less */
+  @media -sass-debug-info{filename{font-family:file\:\/\/F\:\/Works\/media center\/preview\/css\/less\/print\.less}line{font-family:\0000395}}
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #ddd !important;
+  }
+}

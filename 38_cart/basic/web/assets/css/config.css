@@ -1,0 +1,59 @@
+.config{
+	position: fixed;
+	top: 50px;
+	left: -200px;
+	-webkit-transition: 0.3s ease;
+  	transition: 0.3s ease;
+  	z-index: 999;
+}
+
+.config-options{
+	float: left;
+	width: 200px;
+	background-color: #f5f5f5;
+	padding: 15px 10px;
+	border: 1px solid #333;
+	line-height: 24px;
+}
+
+.config-options h4{
+	margin-bottom: 10px;
+}
+
+.config-options .list-unstyled{
+	margin-bottom: 20px;
+}
+
+.config-options .list-unstyled:last-child{
+	margin-bottom: 0;
+}
+
+.config-options .list-unstyled > li > a{
+	display: block;
+	padding-left: 5px;
+}
+
+.config-options .list-unstyled > li > a:hover{
+	background-color: #fff;
+}
+
+.show-theme-options{
+	float: left;
+	padding: 0 10px;
+	font-size: 30px;
+	display: block;
+	background-color: #333;
+	color: #fff;
+}
+
+.config.open{
+	left: 0;
+}
+
+.config .dropdown .dropdown-toggle{
+	padding: 6px 12px;
+}
+
+.config .dropdown .dropdown-toggle:after{
+	content: none;
+}

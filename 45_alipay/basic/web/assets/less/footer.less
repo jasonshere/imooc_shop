@@ -1,0 +1,194 @@
+/*===================================================================================*/
+/*  Footer
+/*===================================================================================*/
+#footer {
+    padding: 54px 0 0 0;
+
+    h2{
+        .capital;
+        font-size: 21px;
+        line-height: 32px;
+        letter-spacing: -1px;
+        border-bottom: 1px solid darken(@second-color,10%);
+        padding-bottom: 11px;
+    }
+    
+    h3{
+        .capital;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -1px;
+        padding-bottom: 11px;
+    }
+    
+    .widget {
+        .row{
+            .no-margin;
+        }
+        
+        .body{
+            margin:27px 0 0 0;
+        
+            li{
+                margin:0 0 20px 0;
+        
+                a{
+                	line-height: 15px;
+                    font-size: 14px;
+                    .capital;
+                    font-weight: 700;
+                    color: @blue;
+                }
+            }
+        }
+
+        .price{
+            line-height:21px;
+        
+            .price-prev{
+                color: darken(@second-color,20%);
+                font-size: 11px;
+                text-decoration: line-through;
+            }
+        
+            .price-current{
+                font-size: 15px;
+                color: @black;
+            }
+            
+            .price-prev,.price-current{
+                .inline;
+                vertical-align: middle;
+            }
+        }
+        
+        .thumb-holder{
+            float: right;
+            display: inline-block;
+            background-color: #fff;
+            border: 1px solid darken(@second-color,10%);
+
+            img{
+                width: 73px;
+            }
+        }
+    }
+
+
+    .sub-form-row {
+        margin: 51px 0;
+        position: relative;
+        z-index: 200;
+
+        &:before{
+            content: "";
+            position: absolute;
+            top:50%;
+            display: block;
+            height: 1px;
+            width:100%;
+            background-color: darken(@second-color,10%);
+            z-index: -1;
+        }
+
+        input{
+            border-radius: 5px;
+            border:1px solid darken(@second-color,10%);
+            padding: 18px;
+            color:@black;
+            width:82%;
+            border-radius:  5px 0  0 5px ;
+        }
+        
+        button{
+            border-radius: 0 5px 5px 0;
+            padding: 19px 31px 20px 31px;
+            margin: 0 0 0 -5px;
+        }
+    }
+
+    .link-list-row{
+        margin:75px 0 72px 0;
+
+        .contact-info{
+            .capital;
+            
+            .regular-bold {
+                margin: 0 0 29px 0;
+            }
+            
+            .social-icons{
+                margin: 58px 0 0 0;
+
+                h3{
+                    line-height: 27px;
+                }
+            }
+        }
+
+        .footer-logo{
+            .inline;
+            margin: 7px 0 30px 0;
+        }
+
+        .link-widget{
+            .inline;
+            width: 215px;
+            margin: 0 0 0 15px;
+
+            h3{
+                padding-bottom: 32px;
+            }
+
+            li{
+                margin: 0 0 12px 0;
+                
+                a{
+                    color:darken(@second-color,30%);
+                    .capital;
+                }
+            }
+        }
+    }
+
+    .copyright-bar{
+        background-color: @black;
+        padding: 17px 0;
+        .capital;
+        
+        .copyright{
+            line-height: 30px;
+            color:lighten(@black,30%);
+            a{
+                color:#fff;
+                font-weight: 600;
+            }
+        }
+    }
+    
+    .payment-methods{
+        text-align: right;
+        
+        li{
+            display: inline-block;
+            width: 50px;
+            background-color:#fff;
+            border-radius: 2px;
+            text-align: center;
+            padding: 0px 5px;
+
+            &:hover{
+                cursor:pointer;
+        
+                img{
+                    .gray(0%);
+                }
+            }
+            
+            img{
+                .transition(0.3s,ease);
+                .gray(100%);
+            }
+        }
+    }
+}

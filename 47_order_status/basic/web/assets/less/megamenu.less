@@ -1,0 +1,282 @@
+/*===================================================================================*/
+/*  Megamenu
+/*===================================================================================*/
+
+/*!
+ * Yamm!3
+ * Yet another megamenu for Bootstrap 3
+ * 
+ * http://geedmo.github.com/yamm3
+ */
+
+.yamm {
+
+    // reset positions 
+    .nav, .collapse, .dropup, .dropdown {
+        position: static;
+    } 
+
+    // propagate menu position under container for fw navbars
+    .container {
+        position: relative;
+    }
+
+    // by default aligns menu to left
+    .dropdown-menu {
+        left: auto;
+    }
+    // ensure a good position
+    .nav.navbar-right .dropdown-menu {
+        left: auto;
+        right: 0;
+    }
+
+    // Content with padding 
+    .yamm-content {
+        padding: 20px 30px;
+    }
+
+    // Fullwidth menu
+    .dropdown.yamm-fw .dropdown-menu {
+        left: 0; right: 0;
+    }
+
+}
+
+.megamenu-vertical{
+    .yamm-content {
+        padding:10px 20px;
+
+        h2{
+            font-size: 18px;
+            line-height: 24px;
+            margin: 20px 0;
+        }
+        
+        li{
+            padding: 5px 0;
+            border-bottom: 1px solid darken(@second-color,10%);
+            .transition(0.3s,ease);
+        
+            &:last-child{
+                border-bottom:0;
+            }
+
+            a{
+                color:@black;
+                line-height: 26px;
+            }
+            &:hover,&:focus{
+                background-color: @second-color;
+            }
+        }
+
+        .dropdown-banner-holder{
+            position: absolute;
+            right: -19px;
+            top: 0;
+
+            a{
+                display: block;
+                padding: 0;
+                width:100%;
+            }
+        }
+    }
+}
+
+.megamenu-horizontal  {
+    .menu-item{
+        .dropdown-menu{
+            position: absolute;
+            top:0;
+            left: 100%;
+            margin: 0;
+            min-width: 365%;
+        }
+    }
+
+    .nav{
+        > li{
+            position: relative;
+            width: 100%;
+
+            > a{
+                color: @light-black;
+                font-weight: 600;
+
+                &:focus, &:hover{
+                    color: #fff;
+
+                    &:after{
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .dropdown-menu{
+                top: 0 !important;
+            }
+
+            > .dropdown-toggle{
+                &:after{
+                    .transition(0.3s,ease);
+                    content: @fa-var-angle-right;
+                    line-height: 18px;
+                    opacity: 0;
+                    color: #fff;
+                    float: right;
+                    font-size: 20px;
+                    height: 20px;
+                    width:20px;
+                }
+            }
+        }
+    }
+    
+    .dropdown{
+        &:hover,&.open,&:focus{
+            .dropdown-toggle{
+                &:focus,&{
+                    color:#fff;
+                }
+
+                &:after{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+#top-mega-nav{
+    margin: 27px 0;
+    
+    nav{
+        background-color:@second-color;
+        border-radius:5px;
+    
+        .le-dropdown{
+            font-size:16px;
+            font-weight: 700;
+
+            &:first-child{
+                display:inline-block;
+                float: left;
+            }
+        }
+    }
+}
+
+#top-megamenu-nav{
+    margin: 33px 0 0 0;
+    position: relative;
+
+    .navbar{
+        margin: 0;
+    }
+
+    .navbar-nav{
+        > li{
+            border-right: 1px solid;
+
+            > a{
+                text-transform: capitalize;
+                font-weight: bold;
+                padding: 18px 27px;
+
+                &,&:focus{
+                    color: #fff;
+                }
+            }
+
+            .dropdown-toggle{
+                &:after{
+                    content: none;
+                }
+
+                &:before{
+                    display: none;
+                    left: auto;
+                    right: 45%;
+                    bottom: -22%;
+                    border: solid transparent;
+                    content: " ";
+                    height: 0;
+                    width: 0;
+                    position: absolute;
+                    pointer-events: none;
+                    border-width: 5px;
+                    margin-left: -5px;
+                }
+            }
+
+            .dropdown-menu{
+                > li{
+                    > a{
+                        padding: 8px 16px;
+                        border-bottom: 1px solid darken(@second-color,10%)!important;;
+                    }
+
+                    &:last-child{
+                        > a{
+                            border-bottom:none!important;
+                        }
+                    }
+                }
+            }
+        }
+
+        .dropdown{
+            &.open{
+                .dropdown-toggle{
+                    &:before{
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.animate-dropdown{
+    .open > .dropdown-menu,
+    .open > .dropdown-menu > .dropdown-submenu > .dropdown-menu {
+        animation-name: slidenavAnimation;
+        animation-duration: 200ms;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-out;
+        animation-fill-mode: forwards;
+        -webkit-animation-name: slidenavAnimation;
+        -webkit-animation-duration: 200ms;
+        -webkit-animation-iteration-count: 1;
+        -webkit-animation-timing-function: ease-out;
+        -webkit-animation-fill-mode: forwards;
+        -moz-animation-name: slidenavAnimation;
+        -moz-animation-duration: 200ms;
+        -moz-animation-iteration-count: 1;
+        -moz-animation-timing-function: ease-out;
+        -moz-animation-fill-mode: forwards;
+    }
+}
+
+@keyframes slidenavAnimation {
+    from {
+        margin-top: -30px;
+        opacity: 0;
+    }
+    to {
+        margin-top: 0;
+        opacity: 1;
+    }
+}
+@-webkit-keyframes slidenavAnimation {
+    from {
+        margin-top: -30px;
+        opacity: 0;
+    }
+    to {
+        margin-top: 0;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "dzer/yii2-express",
+    "description": "快递单号查询,支持国内近100家快递单号查询。",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","快递"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "dzer",
+            "email": "d20053140@gmail.com",
+            "homepage": "http://dzer.me"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "dzer\\express\\": "src/"
+        }
+    }
+}

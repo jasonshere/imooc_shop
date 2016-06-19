@@ -1,0 +1,113 @@
+/*===================================================================================*/
+/*  Sidemenu
+/*===================================================================================*/
+
+.sidemenu-holder{
+    .no-margin;
+    width: 21.5%!important;
+    
+    .side-menu{
+        .head {
+            padding: 17px;
+            color: #fff;
+            border-radius: 5px 5px 0 0;
+            text-transform: capitalize;
+            font-weight: bold;
+            font-size: 16px;
+
+            i {
+                margin: 0 6px 0 0;
+            }
+        }
+        
+        nav{
+            border-radius: 0 0 5px 5px;
+
+            .nav{
+                > li{
+                    border: 1px solid darken(@second-color,10%);
+                    border-top: 0;
+                    border-bottom: 0;
+
+                    .transition(0.3s,ease);
+
+                    > .mega-menu{
+                        padding:3px 0;
+                    }
+
+                    > .sub-menu{
+                        min-width: 0;
+                        width: 100%;
+                    }
+                 
+                    .yamm-content {
+                        padding:10px 20px;
+                 
+                        li{
+                            padding:5px 0;
+                            border-bottom:1px solid darken(@second-color,10%);
+                            .transition(0.3s,ease);
+                 
+                            &:last-child{
+                                border-bottom:0;
+                            }
+
+                            a{
+                                color: @light-black;
+                                line-height: 26px;
+                            }
+
+                            &:hover{
+                                background-color: @second-color;
+                            }
+                        }
+                        
+                        .dropdown-banner-holder{
+                            position: absolute;
+                            right: -19px;
+                            top: 0;
+
+                            a{
+                                display: block;
+                                padding: 0;
+                                width:100%;
+                            }
+                        }
+                    }
+                    
+                    &:last-child{
+                        border-bottom:1px solid darken(@second-color,10%);
+                        border-radius: 0 0 5px 5px;
+
+                        a{
+                            border-radius: 0 0 3px 3px;
+                        }
+                    }
+
+                    &:first-child,&:last-child{
+                        a{
+                            line-height: 26px;
+
+                            &:after{
+                                line-height: 27px;
+                            }
+                        }
+                    }
+                    
+                    a{
+                        padding: 12px 17px ;
+                        line-height: 17px;
+                    }
+                    
+                    &:nth-child(2n+1){
+                        background-color: #fff;
+                    }
+
+                    &:nth-child(2n){
+                        background-color: @second-color;
+                    }
+                }
+            }
+        }
+    }
+}
