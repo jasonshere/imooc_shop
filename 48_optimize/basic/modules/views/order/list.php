@@ -47,44 +47,49 @@
                                 <?php echo $order->orderid ?>
                             </td>
                             <td>
-                                <?php echo $order->username ?>
+                                <?php echo $order->username?>
                             </td>
                             <td>
                                 <?php echo $order->address ?>
                             </td>
                             <td>
-                                <?php echo \Yii::$app->params['express'][$order->expressid] ?>
+                                <?php
+                                    if (array_key_exists($order->expressid, \Yii::$app->params['express'])) {
+                                        echo \Yii::$app->params['express'][$order->expressid];
+                                    }
+                                ?>           
                             </td>
                             <td>
-                                <?php echo $order->amount; ?>
+                                <?php echo $order->amount ?>
                             </td>
                             <td>
                                 <?php foreach($order->products as $product): ?>
-                                <p><a href=""><?php echo $product->num ?> x <?php echo $product->title ?></a></p>
+                                    <?php echo $product->num ?> x <a href="<?php echo yii\helpers\Url::to(['/product/detail', 'productid' => $product->productid]) ?>"><?php echo $product->title ?></a>
                                 <?php endforeach; ?>
                             </td>
                             <?php
                                 if (in_array($order->status, [0])) {
                                     $info = "error";
                                 }
-                                
-                                if (in_array($order->status, [100, 202])) {
+
+                                if (in_array($order->status, [100,202])) {
                                     $info = "info";
                                 }
-
-                                if (in_array($order->status, [201, 400])) {
+                                
+                                if (in_array($order->status, [201])) {
                                     $info = "warning";
                                 }
 
-                                if (in_array($order->status, [220, 260, 300])) {
+                                if (in_array($order->status, [220,260])) {
                                     $info = "success";
                                 }
+
+
                             ?>
-                            <td><span class="label label-<?php echo $info ?>"> <?php echo $order->zhstatus ?></span></td>
+                                <td><span class="label label-<?php echo $info ?>"> <?php echo $order->zhstatus ?> </span></td>
                             <td class="align-right">
-                                <?php if($order->status == 202): ?>
-                                <a href="<?php echo yii\helpers\Url::to(['order/send', 'orderid' => $order->orderid]) ?>">发货</a>
-                                &nbsp;&nbsp;
+                                <?php if ($order->status == 202): ?>
+                                    <a href="<?php echo yii\helpers\Url::to(['order/send', 'orderid' => $order->orderid]) ?>">发货</a>
                                 <?php endif; ?>
                                 <a href="<?php echo yii\helpers\Url::to(['order/detail', 'orderid' => $order->orderid]) ?>">查看</a>
                             </td>
@@ -98,7 +103,7 @@
                         'pagination' => $pager,
                         'prevPageLabel' => '&#8249;',
                         'nextPageLabel' => '&#8250;',
-                    ]); ?>
+                    ]) ?>
                 </div>
                 <!-- end users table -->
             </div>

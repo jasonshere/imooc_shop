@@ -92,6 +92,8 @@ CREATE TABLE IF NOT EXISTS `shop_order`(
     `status` INT UNSIGNED NOT NULL DEFAULT '0',
     `expressid` INT UNSIGNED NOT NULL DEFAULT '0',
     `expressno` VARCHAR(50) NOT NULL DEFAULT '',
+    `tradeno` VARCHAR(100) NOT NULL DEFAULT '',
+    `tradeext` TEXT,
     `createtime` INT UNSIGNED NOT NULL DEFAULT '0',
     `updatetime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     KEY shop_order_userid(`userid`),

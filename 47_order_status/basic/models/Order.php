@@ -4,6 +4,8 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 use app\models\OrderDetail;
+use app\models\Product;
+use app\models\Category;
 
 class Order extends ActiveRecord
 {
@@ -50,14 +52,45 @@ class Order extends ActiveRecord
         ];
     }
 
+    public function getDetail($orders)
+    {
+        foreach($orders as $order){
+            $order = self::getData($order);
+        }
+        return $orders;
+    }
+
+    public static function getData($order)
+    {
+        $details = OrderDetail::find()->where('orderid = :oid', [':oid' => $order->orderid])->all();
+        $products = [];
+        foreach($details as $detail) {
+            $product = Product::find()->where('productid = :pid', [':pid' => $detail->productid])->one();
+            $product->num = $detail->productnum;
+            $products[] = $product;
+        }
+        $order->products = $products;
+        $order->username = User::find()->where('userid = :uid', [':uid' => $order->userid])->one()->username;
+        $order->address = Address::find()->where('addressid = :aid', [':aid' => $order->addressid])->one();
+        if (empty($order->address)) {
+            $order->address = "";
+        } else {
+            $order->address = $order->address->address;
+        }
+        $order->zhstatus = self::$status[$order->status];
+        return $order;
+    }
+
     public static function getProducts($userid)
     {
         $orders = self::find()->where('status > 0 and userid = :uid', [':uid' => $userid])->orderBy('createtime desc')->all();
-        foreach ($orders as $order) {
+        foreach($orders as $order) {
             $details = OrderDetail::find()->where('orderid = :oid', [':oid' => $order->orderid])->all();
-            foreach ($details as $detail) {
+            $products = [];
+            foreach($details as $detail) {
                 $product = Product::find()->where('productid = :pid', [':pid' => $detail->productid])->one();
                 $product->num = $detail->productnum;
+                $product->price = $detail->price;
                 $product->cate = Category::find()->where('cateid = :cid', [':cid' => $product->cateid])->one()->title;
                 $products[] = $product;
             }
@@ -67,27 +100,5 @@ class Order extends ActiveRecord
         return $orders;
     }
 
-    public static function getDetail($orders)
-    {
-        foreach($orders as $order) {
-            $details = OrderDetail::find()->where('orderid = :oid', [':oid' => $order->orderid])->all();
-            $products = [];
-            foreach($details as $detail) {
-                $product = Product::find()->where('productid = :pid', [':pid' => $detail->productid])->one();
-                $product->num = $detail->productnum;
-                $products[] = $product;
-            }
-            $order->products = $products;
-            $order->username = User::find()->where('userid = :uid', [':uid' => $order->userid])->one()->username;
-            $order->address = Address::find()->where('addressid = :aid', [':aid' => $order->addressid])->one();
-            if (empty($order->address)) {
-                $order->address = "";
-            } else {
-                $order->address = $order->address->address;
-            }
-            $order->zhstatus = self::$status[$order->status];
-        }
-        return $orders;
-    }
 
 }

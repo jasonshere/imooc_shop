@@ -41,10 +41,10 @@
                     <div class="span3 form-sidebar pull-right">
                         <div class="alert alert-info hidden-tablet">
                             <i class="icon-lightbulb pull-left"></i>
-                            请在左侧表单当中填写要添加的分类，请选择好上级分类
+                            请在左侧表单当中填写快递单号
                         </div>                        
-                        <h6>商城分类说明</h6>
-                        <p>该分类为无限级分类</p>
+                        <h6>快递单号说明</h6>
+                        <p>填写快递单号</p>
                     </div>
                 </div>
             </div>

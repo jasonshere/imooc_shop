@@ -161,20 +161,23 @@ class OrderController extends CommonController
 
     public function actionGetexpress()
     {
-        $no = Yii::$app->request->get('expressno');
-        echo Express::search($no);
+        $expressno = Yii::$app->request->get('expressno');
+        $res = Express::search($expressno);
+        echo $res;
         exit;
     }
 
     public function actionReceived()
     {
-        if (Yii::$app->session['isLogin'] != 1) {
-            throw new \Exception();
-        }
         $orderid = Yii::$app->request->get('orderid');
-        Order::updateAll(['status' => Order::RECEIVED], 'orderid = :oid', [':oid' => $orderid]);
+        $order = Order::find()->where('orderid = :oid', [':oid' => $orderid])->one();
+        if (!empty($order) && $order->status == Order::SENDED) {
+            $order->status = Order::RECEIVED;
+            $order->save();
+        }
         return $this->redirect(['order/index']);
     }
+
 }
 
 

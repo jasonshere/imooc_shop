@@ -1,4 +1,5 @@
 <?php
+if (!isset($_SESSION))
 session_start();
 /* PHP SDK
  * @version 2.0.0

@@ -18,8 +18,8 @@
           <tr style="background-color:#F5F5F5;width:100%">
             <td style="padding:10px 20px;text-align:left;width:100%">
               <label>
-                <strong title="<?php echo date("Y-m-d H:i:s", $order->createtime); ?>" style="margin-right:8px;font-weight:bold;">
-                    <?php echo date("Y-m-d H:i:s", $order->createtime); ?>
+                <strong title="" style="margin-right:8px;font-weight:bold;">
+                    <?php echo date('Y-m-d H:i:s', $order->createtime); ?>
                 </strong>
               </label>
               <span>
@@ -28,7 +28,7 @@
               <span>
               </span>
               <span>
-                <?php echo $order->orderid; ?>
+                <?php echo $order->orderid ?>
               </span>
             </td>
             
@@ -45,19 +45,19 @@
           <col style="width:11%;">
         </colgroup>
         <tbody>
-          <?php $i = 0; ?>
+          <?php $i = 1; ?>
           <?php foreach($order->products as $product): ?>
           <tr>
             <td style="text-align:left;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:0;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;padding-left:20px;" >
               <div style="overflow:hidden;">
               <a class="tp-tag-a" href="<?php echo yii\helpers\Url::to(['product/detail', 'productid' => $product->productid]) ?>" style="float:left;width:27%;margin-right:2%;text-align:center;" target="_blank">
-              <img src="<?php echo $product->cover ?>-picsmall" style="border:1px solid #E8E8E8;max-width:80px;">
+                <img src="<?php echo $product->cover ?>-picsmall" style="border:1px solid #E8E8E8;max-width:80px;">
                 </a>
                 <div style="float:left;width:71%;word-wrap:break-word;">
                   <div style="margin:0px;">
                   <a class="tp-tag-a" href="<?php echo yii\helpers\Url::to(['product/detail', 'productid' => $product->productid]) ?>" target="_blank">
                       <span>
-                        <?php echo $product->title; ?>
+                        <?php echo $product->title ?>
                       </span>
                     </a>
                     <span>
@@ -84,20 +84,9 @@
             </td>
             <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:0;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;">
               <div style="font-family:verdana;font-style:normal;">
-                <?php if ($product->issale): ?>
                 <p>
-                  <del style="color:#9C9C9C;">
                     <?php echo $product->price ?>
-                  </del>
                 </p>
-                <p>
-                    <?php echo $product->saleprice ?>
-                </p>
-                <?php else: ?>
-                    <p>
-                        <?php echo $product->price ?>
-                    </p>
-                <?php endif; ?>
                 <span>
                 </span>
                 <span>
@@ -107,7 +96,7 @@
             <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:0;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;">
               <div>
                 <div>
-                数量 ：<?php echo $product->num ?>
+                数量 <?php echo $product->num ?>
                 </div>
               </div>
             </td>
@@ -131,7 +120,7 @@
                 
               </div>
             </td>
-            <?php if ($i == 0): ?>
+            <?php if ($i == 1): ?>
             <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:1px;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;" >
               <div>
                 <div style="font-family:verdana;font-style:normal;">
@@ -170,13 +159,13 @@
             <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:1px;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;" >
               <div>
                 <div style="margin-bottom:3px;">
-                <a class="tp-tag-a" href="<?php echo yii\helpers\Url::to(['order/check', 'orderid' => $order->orderid]); ?>">
-                    <?php echo $order->zhstatus; ?>
-                  </a>
+                <a class="tp-tag-a" href="<?php echo yii\helpers\Url::to(['order/check', 'orderid' => $order->orderid]) ?>">
+                    <?php echo $order->zhstatus ?>
+                </a>
                 </div>
+                <?php if ($order->status == 220): ?>
                 <div>
                   <div style="margin-bottom:3px;position:relative">
-                    <?php if ($order->status == 220): ?>
                     <span>
                         <a class="tp-tag-a" href="<?php echo yii\helpers\Url::to(['order/received', 'orderid' => $order->orderid]) ?>" target="_blank">
                         <span class="trade-operate-text">
@@ -193,20 +182,18 @@
                       <div class="expressshow" style="overflow:auto;text-align:left;font-size:12px;width:200px;height:300px;position:absolute;border:1px solid #ccc;padding:15px;background-color:#eee">快递状态</div>
                       </a>
                     </span>
-                    
-                    <?php endif; ?>
                   </div>
-                  
+                <?php endif; ?>
+                <?php else: ?>
+                    <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:1px;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;" ></td>
+                    <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:1px;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;" ></td>
+                <?php endif; ?>
                 </div>
               </div>
             </td>
-            <?php else: ?>
-            <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:1px;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;" ></td>
-            <td style="text-align:center;vertical-align:top;padding-top:10px;padding-bottom:10px;border-right-width:1px;border-right-style:solid;border-right-color:#E8E8E8;border-top-width:0;border-top-style:solid;border-top-color:#E8E8E8;" ></td>
-            <?php endif; ?>
          </tr>
-          <?php $i = 1; ?>
-          <?php endforeach; ?>
+        <?php $i++; ?>
+        <?php endforeach; ?>
        </tbody>
       </table>
       <div>

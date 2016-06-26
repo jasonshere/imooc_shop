@@ -42,7 +42,7 @@ class Pay{
                     return false;
                 }
                 if ($order_info->status == Order::CHECKORDER) {
-                    Order::updateAll(['status' => $status], 'orderid = :oid', [':oid' => $order_info->orderid]);
+                    Order::updateAll(['status' => $status, 'tradeno' => $trade_no, 'tradeext' => json_encode($data)], 'orderid = :oid', [':oid' => $order_info->orderid]);
                 } else {
                     return false;
                 }

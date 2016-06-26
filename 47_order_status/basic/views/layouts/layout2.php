@@ -563,24 +563,21 @@
         });
         $("li.disabled").hide();
         $(".expressshow").hide();
-        $(".express").click(function(e){
-            e.preventDefault();
-        });
         $(".express").hover(function(){
             var a = $(this);
-            if ($(this).attr('data') != 'ok') {
-            $.get('<?php echo yii\helpers\Url::to(['order/getexpress']) ?>', {'expressno':$(this).attr('data')}, function(res) {
-                var str = "";
-                if (res.message = 'ok') {
-                    for(var i = 0;i<res.data.length;i++) {
-                        str += "<p>"+res.data[i].context+" "+res.data[i].time+" </p>";
+            if (a.attr('data') != 'ok') {
+                $.get('<?php echo yii\helpers\Url::to(['order/getexpress']) ?>', {'expressno' : a.attr('data')}, function(res){
+                    var str = "";
+                    if (res.message == 'ok') {
+                        for(var i = 0;i<res.data.length;i++) {
+                            str += "<p>" + res.data[i].context + " " + res.data[i].time + "</p>";
+                        }
                     }
-                }
-                a.find(".expressshow").html(str);
-                a.attr('data', 'ok');
-            }, 'json');
+                    a.find(".expressshow").html(str);
+                    a.attr('data', 'ok');
+                }, 'json');
             }
-            $(this).find(".expressshow").show();
+            a.find(".expressshow").show();
         }, function(){
             $(this).find(".expressshow").hide();
         });

@@ -18,7 +18,7 @@ class ProductController extends Controller
         $pager = new Pagination(['totalCount' => $count, 'pageSize' => $pageSize]);
         $products = $model->offset($pager->offset)->limit($pager->limit)->all();
         $this->layout = "layout1";
-        return $this->render("products", ['pager' => $pager, 'products' => $products]);
+        return $this->render("products", ['products' => $products, 'pager' => $pager]);
     }
 
     public function actionAdd()
